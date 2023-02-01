@@ -4,8 +4,10 @@ import (
 	"errors"
 
 	"github.com/Softpedro/ecommerce_back/domain/user"
+	"github.com/Softpedro/ecommerce_back/infrastructure/handler/response"
 	"github.com/Softpedro/ecommerce_back/model"
 	"github.com/google/uuid"
+	"github.com/labstack/echo/v4"
 )
 
 type handler struct {
