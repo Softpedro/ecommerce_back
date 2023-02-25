@@ -56,3 +56,17 @@ func (h handler) GetAll(c echo.Context) error {
 
 	return c.JSON(h.responser.OK(users))
 }
+
+func (h handler) GetByID(c echo.Context) error {
+	ID, ok := c.Get("userID").(uuid.UUID)
+	if !ok {
+		return h.responser.Error(c, "c.Get().(uuid.UUID)", errors.New("couldn´t parse the ID"))
+	}
+
+	u, err := h.useCase.GetByID(ID)
+	if err != nil {
+		return h.responser.Error(c, "useCase.GetWhere()", err)
+	}
+
+	return c.JSON(h.responser.OK(u))
+}

@@ -29,6 +29,10 @@ func adminRoutes(e *echo.Echo, h handler, middlewares ...echo.MiddlewareFunc) {
 	g := e.Group("/api/v1/admin/users", middlewares...)
 
 	g.GET("", h.GetAll)
+
+	i := e.Group("/api/v1/private/user", middlewares...)
+
+	i.GET("", h.GetByID)
 }
 
 func publicRoutes(e *echo.Echo, h handler) {
